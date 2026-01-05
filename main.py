@@ -130,6 +130,14 @@ if st.button("📝 계획안 생성하기", type="primary", use_container_width=
                 st.divider()
                 st.markdown(response.text)
                 
+                # 다운로드 버튼
+                st.download_button(
+                    label="💾 계획안 다운로드받기",
+                    data=response.text,
+                    file_name="숲체험_계획안.md",
+                    mime="text/markdown"
+                )
+                
         except Exception as e:
             st.error(f"❌ 오류가 발생했습니다: {str(e)}")
 
