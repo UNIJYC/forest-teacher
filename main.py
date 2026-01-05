@@ -1,5 +1,5 @@
 import streamlit as st
-from google import genai
+import google.generativeai as genai
 
 # 페이지 설정
 st.set_page_config(
@@ -62,7 +62,7 @@ api_key = st.sidebar.text_input(
 # 모델 선택
 model_option = st.sidebar.selectbox(
     "🤖 모델 선택",
-    options=["gemini-2.0-flash", "gemini-3-pro-preview"],
+    options=["gemini-1.5-flash", "gemini-1.5-pro", "gemini-pro"],
     index=0
 )
 
@@ -105,7 +105,8 @@ if st.button("📝 계획안 생성하기", type="primary", use_container_width=
     else:
         # Gemini API 설정
         try:
-            client = genai.Client(api_key=api_key)
+            genai.configure(api_key=api_key)
+            model = genai.GenerativeModel(model_option)
             
             # 사용자 입력 데이터 구성
             user_input = f"""# User Input Data
@@ -120,10 +121,7 @@ if st.button("📝 계획안 생성하기", type="primary", use_container_width=
 
             # API 호출
             with st.spinner("🌲 숲쌤이 계획안을 작성하고 있어요..."):
-                response = client.models.generate_content(
-                    model=model_option,
-                    contents=full_prompt
-                )
+                response = model.generate_content(full_prompt)
                 
                 # 결과 출력
                 st.success("✅ 계획안이 생성되었습니다!")
