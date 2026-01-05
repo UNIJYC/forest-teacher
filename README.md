@@ -18,6 +18,7 @@ Google Gemini API를 활용하여 [누리과정]에 기반한 창의적이고 �
 - 💬 **교사 발문 팁**: 아이들의 사고를 확장하는 질문 예시 포함
 - 🏠 **가정 연계 활동**: 교실/가정에서 연계 가능한 확장 활동 추천
 - 📋 **알림장 템플릿**: 학부모용 메시지 자동 생성
+- 💾 **다운로드 기능**: 생성된 계획안을 마크다운 파일로 저장
 
 ## 🚀 시작하기
 
@@ -30,7 +31,7 @@ Google Gemini API를 활용하여 [누리과정]에 기반한 창의적이고 �
 
 ```bash
 # 저장소 클론 또는 파일 다운로드 후
-cd 20260105
+cd forest-teacher
 
 # 의존성 설치
 pip install -r requirements.txt
@@ -47,16 +48,17 @@ streamlit run main.py
 ## 📝 사용 방법
 
 1. **사이드바**에서 Gemini API Key를 입력합니다.
-2. **모델 선택**: `gemini-2.0-flash` 또는 `gemini-3-pro-preview` 중 선택합니다.
+2. **모델 선택**: 사용할 AI 모델을 선택합니다.
 3. **계절/날씨**: 현재 계절과 날씨를 입력합니다. (예: "겨울, 눈 온 뒤 맑은 날")
 4. **대상 연령**: 만 3세, 4세, 5세, 혼합 중 선택합니다.
 5. **핵심 주제**: 숲 활동의 주제를 입력합니다. (예: "낙엽 놀이", "곤충 관찰")
 6. **"계획안 생성하기"** 버튼을 클릭합니다.
+7. **"💾 계획안 다운로드받기"** 버튼으로 파일 저장!
 
 ## 📂 프로젝트 구조
 
 ```
-20260105/
+forest-teacher/
 ├── main.py           # Streamlit 메인 애플리케이션
 ├── requirements.txt  # Python 의존성 목록
 └── README.md         # 프로젝트 설명서
@@ -66,8 +68,9 @@ streamlit run main.py
 
 | 모델 | 설명 |
 |------|------|
-| `gemini-2.0-flash` | 빠른 응답 속도, 일반적인 사용에 적합 |
-| `gemini-3-pro-preview` | 더 정교한 응답, 복잡한 계획안에 적합 |
+| `gemini-3-pro-preview` | 최신 추론 모델, 복잡한 계획안에 최적 ⭐ |
+| `gemini-2.5-flash` | 빠른 응답, 일반적인 사용에 적합 |
+| `gemini-2.0-flash` | 비용 효율적, 간단한 계획안에 적합 |
 
 ## 📋 생성되는 계획안 구성
 
@@ -92,8 +95,15 @@ streamlit run main.py
 ## 🔧 기술 스택
 
 - **Frontend**: [Streamlit](https://streamlit.io/)
-- **AI Model**: [Google Gemini API](https://ai.google.dev/)
+- **AI Model**: [Google Gemini API](https://ai.google.dev/) (google-genai)
 - **Language**: Python 3.x
+
+## 🌐 배포
+
+Streamlit Cloud에서 무료로 배포할 수 있습니다:
+1. GitHub에 코드 push
+2. [Streamlit Cloud](https://streamlit.io/cloud)에서 앱 연결
+3. 자동 배포 완료!
 
 ## 📜 라이선스
 
